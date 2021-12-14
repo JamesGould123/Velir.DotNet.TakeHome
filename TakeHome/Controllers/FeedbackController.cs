@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TakeHome.Models;
 
 namespace TakeHome.Controllers
 {
     public class FeedbackController : Controller
     {
-        // GET: Feedback
-        
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpPost]
         [ValidateInput(true)]
-        public ActionResult Feedback(FeedbackForm form)
+        public ActionResult Index(FeedbackFormModel form)
         {
+            //todo: log this data before returning ThankYou page.
+
             if (ModelState.IsValid)
             {
-                return View("ThankYou", form);
+                return View("ThankYou", new FeedbackFormConfirmationViewModel(form));
             }
             else
                 ViewBag.Result = "Invalid Entries, Kindly Recheck.";

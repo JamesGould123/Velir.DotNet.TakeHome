@@ -1,15 +1,13 @@
-﻿@model TakeHome.Models.FeedbackForm
+﻿@model TakeHome.Models.FeedbackFormModel
 @{
 	ViewBag.Title = "Feedback";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
 <div class="form">
-    @*@using (Html.BeginForm("Submit", "Feedback"))*@
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(FormMethod.Post))
     {
-        /* form here */
     <fieldset>
         <div class="editor-label">
             @Html.LabelFor(m => m.FirstName)
